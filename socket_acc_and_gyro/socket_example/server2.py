@@ -1,4 +1,6 @@
 import socket 
+import numpy as np
+import matplotlib.pyplot as plt
 
 HOST = "192.168.239.64"
 PORT = 8081
