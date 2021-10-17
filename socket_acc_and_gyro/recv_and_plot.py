@@ -17,15 +17,16 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             data = conn.recv(1024).decode('utf-8')
             print("Received from socket server:", data)
             if (data.count('{') != 1):
-                data = data.split('}')[0] + '}'
+                # Incomplete data are received.
+                choose = 0
+                buffer_data = data.split('}')
+                while buffer_data[choose][0] != '{':
+                    choose += 1
+                data = buffer_data[choose] + '}'
+                
             obj = json.loads(data)
             
-            observe_data = 'x' # Modify yourself: x, y, z, gx, gy, gz
-
-            x = obj['s']
-            y = obj[observe_data]
-            plt.scatter(x, y, c='blue')
-            plt.title(observe_data + " variations over time")
+            t = obj['s']
+            plt.scatter(t, obj['x'], c='blue') # x, y, z, gx, gy, gz
             plt.xlabel("sample num")
-            plt.ylabel(observe_data)
             plt.pause(0.0001)
