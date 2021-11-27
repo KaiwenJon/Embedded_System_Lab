@@ -1,0 +1,4 @@
+File -> New Program -> empty MbedOS program
+https://os.mbed.com/teams/mbed official/code/mbed-dsp
+Modify Program's targets.jsons printf_lib value: std("printf_lib": "std")
+https://os.mbed.com/teams/ST/code/DISCO_L475VG_IOT01-Sensors-BSP/
